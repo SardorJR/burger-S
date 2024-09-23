@@ -49,7 +49,7 @@ const Modal_Form = ({ isOpen, onClose }) => {
             />
             <input
               type="text"
-              name="title"
+              name="titles"
               className="popup-field"
               placeholder="Название"
               {...register('title')}
