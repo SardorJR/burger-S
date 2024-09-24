@@ -1,22 +1,12 @@
 import Modal_Dost from "./modal-dostavka";
 
 const Card = ({ elem }) => {
-
+    console.log(elem);
 
     return (
         <div className="elem">
             <div className="img">
-                {elem.images && elem.images.length > 0 ? (
-                    <img
-                        src={elem.images[0]}
-                        alt={elem.titles.ru}
-                    />
-                ) : (
-                    <img    
-                        src="default-image.jpg" 
-                        alt="Изображение отсутствует"
-                    />
-                )}
+                <img src={elem.image} alt="nnnnn" />
             </div>
             <div className="texts">
                 <p>{elem.price}₽</p>

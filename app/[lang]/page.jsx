@@ -1,10 +1,12 @@
-"use client"
+"use client";
 import Image from "next/image";
-import Modal_Dost from "../components/modal-dostavka"
-import Card from "../components/card"
-import Food_selections from "../components/Food_selection"
+import Modal_Dost from "../../components/modal-dostavka";
+import Card from "../../components/card";
+import Food_selections from "../../components/Food_selection";
 import { useEffect, useState } from "react";
-export default  function Home() {
+
+export default function Home({ params: { lang } }) {
+  console.log(lang);
 
   const [menuItems, setMenuItems] = useState([]);
 
@@ -13,10 +15,10 @@ export default  function Home() {
       try {
         const res = await fetch('http://localhost:3000/api/menu');
         if (!res.ok) throw new Error("Ошибка при получении данных");
-        
+
         const response = await res.json();
-        console.log("Response from API:", response); // Логируем ответ
-        setMenuItems(response.data); // Убедитесь, что это массив
+        console.log("Response from API:", response);
+        setMenuItems(response.data);
       } catch (error) {
         console.error("Ошибка:", error);
       }
@@ -36,26 +38,9 @@ export default  function Home() {
     { imgSrc: "/images/free-icon-onion-2362361.png", title: "Бургеры", id: 8 },
     { imgSrc: "/images/free-icon-onion-2362361.png", title: "Бургеры", id: 9 },
   ];
+
   return (
     <>
-      <div className="circle-box"></div>
-      <div className="wrap">
-        <div className="icons">
-          <img src="/images/logo.png" alt="" />
-        </div>
-        <div className="box">
-          <div className="left">
-            <img src="/images/g10.png" alt="" />
-          </div>
-          <div className="right">
-            <span className="white">Только самые <br />
-              <span className="yellow">сочные бургеры!</span>
-            </span>
-            <h4>Бесплатная доставка от 599₽</h4>
-          </div>
-        </div>
-      </div>
-
       <div className="container">
         <div className="box-vibor-blud">
           {items_selections.map((item, index) => (
@@ -65,7 +50,6 @@ export default  function Home() {
               isFirst={index === 0}
             />
           ))}
-
         </div>
         <div className="flex">
           <div className="sticky">
@@ -109,7 +93,7 @@ export default  function Home() {
                     <span>+</span>
                   </div>
                 </div>
-                <div className="element">
+                <div className="element" >
                   <div className="l">
                     <div className="left">
                       <img src="/images/Rectangle 2.png" alt="" />
@@ -126,6 +110,7 @@ export default  function Home() {
                     <span>+</span>
                   </div>
                 </div>
+
               </div>
               <div className="counts-box2">
                 <h4>Итого</h4>
@@ -140,8 +125,7 @@ export default  function Home() {
                       </div>
                     </div>
                     <div className="right-mod">
-
-                      <form >
+                      <form>
                         <h2>Доставка</h2>
                         <div className="inps">
                           <input type="text" placeholder="Ваше имя" />
@@ -159,7 +143,7 @@ export default  function Home() {
                         </div>
                         <div className="one-inp">
                           <input type="text" placeholder="Улица, дом, квартира" />
-                        </div >
+                        </div>
                         <div className="flex-inp">
                           <input type="text" placeholder="Этаж" />
                           <input type="text" placeholder="Домофон" />
@@ -186,37 +170,6 @@ export default  function Home() {
           </div>
         </div>
       </div>
-      <footer>
-        <div className="box-foot">
-          <div className="left-foot">
-            <div className="item-foot">
-              <img src="/images/Group 7.png" alt="" />
-              <div className="loc">
-                <p>© YouMeal, 2022</p>
-                <p>Design: Anastasia Ilina</p>
-              </div>
-            </div>
-          </div>
-          <div className="right-foot">
-            <div className="item">
-              <span>Номер для заказа</span>
-              <div className="tel-number">
-                <img src="/images/Vector.png" alt="" />
-                <p>+7(930)833-38-11</p>
-              </div>
-            </div>
-            <div className="item">
-              <span>Мы в соцсетях</span>
-              <div className="tel-number">
-                <img src="/images/entypo-social_vk-with-circle.png" alt="" />
-                <img src="/images/bi_telegram.png" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-
     </>
   );
 }
-

@@ -69,7 +69,7 @@ export const Card2 = ({ item }) => {
     return (
         <div>
             <div className="burger-card">
-                <img src={item.imageUrl} alt={item.name} className="burger-image" />
+                <img src={item.image} alt={item.name} className="burger-image" />
                 <h3 className="burger-title">{item.titles ? item.titles.ru : 'Название недоступно'}</h3>
                 <div className="button-container">
                     <button className="edit-button">Изменить</button>
