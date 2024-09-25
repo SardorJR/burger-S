@@ -1,8 +1,6 @@
 "use client"
-
 import { useState } from "react";
 import Modal_Form from "../dashboard/form"
-
 export default function Layout({ children }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -15,6 +13,8 @@ export default function Layout({ children }) {
     };
 
     return (
+        <html lang="en">
+        <body>
         <div className="container">
             <header className="header">
                 <img src="/images/logo.png" alt="Logo" />
@@ -50,5 +50,7 @@ export default function Layout({ children }) {
                 <Modal_Form isOpen={isModalOpen} onClose={closeModal} />
             )}
         </div>
+        </body>
+    </html>
     );
 }

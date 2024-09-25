@@ -65,7 +65,7 @@ export default function Page() {
 
 
 export const Card2 = ({ item }) => {
-    console.log(item);
+    console.log(item)
     return (
         <div>
             <div className="burger-card">
