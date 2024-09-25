@@ -138,7 +138,11 @@ body {
     transform: translateY(0px);
   }
 }
-
+.container2 {
+  width: 1300px;
+  margin: 0 auto;
+  padding-block: 100px 40px;
+}
 .container {
   width: 1300px;
   margin: 0 auto;
@@ -1102,13 +1106,13 @@ footer {
   align-items: center;
   background: #FFAB08;
   padding: 10px 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: fixed;
+
+  position: absolute;
   top: 0;
-  left: 235px;
+  left: 240px;
   right: 0;
   height: 45px;
-
+z-index: 111;
 }
 
 .header h1 {
@@ -1293,7 +1297,7 @@ footer {
   display: flex;
   gap: 20px;
   padding: 20px 30px;
-  background: #FF8B00;
+  background-color: #FFAB08;
   border-radius: 20px;
   height: 100%;
 }
@@ -1303,7 +1307,7 @@ footer {
   display: flex;
   justify-content: start;
   overflow-x: auto; /* Убедитесь, что это auto */
-  scrollbar-width: thin; /* Для Firefox */
+  scrollbar-width: none; /* Для Firefox */
   scrollbar-color: #d8d7d6 #f0f0f0;
 }
 .top-container::-webkit-scrollbar {
@@ -1322,6 +1326,9 @@ footer {
 
 .top-container::-webkit-scrollbar-thumb:hover {
   background-color: #FFA500; /* Цвет ползунка при наведении */
+}
+.w{
+  background-color: #FFA500; 
 }
 .burger-card {
   border: 1px solid #ddd;

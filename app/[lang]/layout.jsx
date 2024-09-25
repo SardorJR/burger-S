@@ -46,7 +46,7 @@
 // }
 
 import React from 'react';
-import "./globals.css";
+import "../globals.css"
 import { getDictionary } from './dictionalies';
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'ru' }];

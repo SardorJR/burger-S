@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import Modal_Form from "../dashboard/form"
+import "../../globals.css"
 export default function Layout({ children }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -14,8 +15,8 @@ export default function Layout({ children }) {
 
     return (
         <html lang="en">
-        <body>
-        <div className="container">
+        <body className="w">
+        <div className="container2">
             <header className="header">
                 <img src="/images/logo.png" alt="Logo" />
                 <div className="header-icons">
