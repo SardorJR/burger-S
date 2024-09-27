@@ -1,11 +1,29 @@
-"use client"
-import { useRouter } from 'next/navigation'
-import React from 'react';
+"use client";
+import { useState, useEffect } from 'react'; // Добавляем useState и useEffect
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation'; // Убедитесь, что useRouter нужен
+import React from 'react';
 
 const Modal_Form = ({ isOpen, onClose }) => {
   const { register, handleSubmit, reset } = useForm();
-  const router = useRouter();
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await fetch('http://localhost:3000/api/category');
+        if (!res.ok) throw new Error("Ошибка при получении данных категорий");
+
+        const response = await res.json();
+        setCategories(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Ошибка при получении категорий:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   async function onSubmit(formData) {
     console.log(formData);
@@ -22,8 +40,7 @@ const Modal_Form = ({ isOpen, onClose }) => {
 
       const responseData = await res.json();
       console.log(responseData);
-      onClose()
-      router.push('/');
+      onClose();
     } catch (error) {
       console.error('Ошибка при отправке данных:', error);
     }
@@ -68,6 +85,18 @@ const Modal_Form = ({ isOpen, onClose }) => {
               placeholder="Цена"
               {...register('price')}
             />
+            <select
+              name="category_id"
+              className="popup-field"
+              {...register('category_id')}
+            >
+              <option value="">Выберите категорию</option>
+              {categories.map((category) => (
+                <option key={category._id} value={category._id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
             <textarea
               name="composition"
               className="popup-textarea"
@@ -80,7 +109,9 @@ const Modal_Form = ({ isOpen, onClose }) => {
               placeholder="Описание"
               {...register('description')}
             ></textarea>
-            <button type="submit" className="popup-submit-btn">Добавить</button>
+            <button type="submit" className="popup-submit-btn">
+              Добавить
+            </button>
           </form>
         </div>
       </div>

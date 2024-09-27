@@ -1,16 +1,15 @@
 import Modal_Dost from "./modal-dostavka";
 
 const Card = ({ elem }) => {
-    console.log(elem);
-
+ 
     return (
         <div className="elem">
             <div className="img">
-                <img src={elem.image} alt="nnnnn" />
+                <img src={elem.image} alt={elem.title} />
             </div>
             <div className="texts">
                 <p>{elem.price}₽</p>
-                <span>{elem.titles ? elem.titles.ru : 'Название недоступно'}</span>
+                <span>{elem.title}</span>
                 <h3>{elem.weight}г</h3>
                 <div className="center2">
                     <Modal_Dost Button={<button className="btn">

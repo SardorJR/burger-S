@@ -138,24 +138,34 @@ body {
     transform: translateY(0px);
   }
 }
+
 .container2 {
   width: 1300px;
   margin: 0 auto;
   padding-block: 100px 40px;
 }
+
 .container {
   width: 1300px;
   margin: 0 auto;
   padding-block: 100px 40px;
 
   .box-vibor-blud {
-    width: 100%;
+    width: 1300px;
+    overflow-x: scroll;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 20px;
 
+    scrollbar-width: none;
 
+    .item {
+      img {
+        width: 25px;
+        height: 20px;
+        object-fit: contain;
+      }
+    }
   }
 }
 
@@ -235,6 +245,9 @@ body {
       }
 
       button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 41px;
         height: 20px;
         border-radius: 6px;
@@ -410,7 +423,6 @@ body {
   }
 
   .box-elem {
-
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
@@ -431,6 +443,7 @@ body {
         height: 220px;
 
         img {
+          object-fit: cover;
           width: 100%;
           height: 100%;
           border-radius: 10px;
@@ -984,18 +997,16 @@ footer {
 .leftsideBar {
   width: 240px;
   border-radius: 8px;
-  background:#FFAB08;
+  background: #000833;
 
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
   padding: 20px 10px;
   transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.02);
-  }
+  z-index: 11111;
+  box-shadow: 5px 0 15px rgba(202, 199, 199, 0.637);
 
   h3 {
     text-transform: uppercase;
@@ -1030,6 +1041,10 @@ footer {
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
+
+    a {
+      width: 100%;
+    }
 
     .item {
       width: 100%;
@@ -1104,15 +1119,15 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #FFAB08;
+  background: #000833;
   padding: 10px 20px;
-
-  position: absolute;
+  height: 50px;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  position: fixed;
   top: 0;
-  left: 240px;
+  left: 235px;
   right: 0;
-  height: 45px;
-z-index: 111;
+  z-index: 111;
 }
 
 .header h1 {
@@ -1179,12 +1194,14 @@ z-index: 111;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 22000;
   backdrop-filter: blur(5px);
 }
 
 .popup-box {
-  background: linear-gradient(135deg, #FFAB08, #FF8B00);
+  overflow-y: scroll;
+  scrollbar-width: none;
+  background: linear-gradient(135deg, #08a4ff, #ea00ff);
   border-radius: 20px;
   padding: 40px 30px;
   width: 450px;
@@ -1236,7 +1253,8 @@ z-index: 111;
   gap: 15px;
 }
 
-.popup-field, .popup-textarea {
+.popup-field,
+.popup-textarea {
   width: 100%;
   padding: 12px;
   border: none;
@@ -1249,7 +1267,8 @@ z-index: 111;
   transition: all 0.3s ease;
 }
 
-.popup-field:focus, .popup-textarea:focus {
+.popup-field:focus,
+.popup-textarea:focus {
   outline: none;
   box-shadow: 0 0 10px rgba(255, 171, 8, 0.8);
 }
@@ -1260,8 +1279,8 @@ z-index: 111;
 
 .popup-submit-btn {
   background: #ffffff;
-  color: #FF8B00;
-  border: 2px solid #FF8B00;
+  color: #008cff;
+  border: 2px solid #00aeff;
   padding: 12px 20px;
   border-radius: 8px;
   font-size: 16px;
@@ -1272,7 +1291,7 @@ z-index: 111;
 }
 
 .popup-submit-btn:hover {
-  background: #FF8B00;
+  background: #0004ff;
   color: #ffffff;
 }
 
@@ -1281,6 +1300,7 @@ z-index: 111;
     transform: scale(0.85);
     opacity: 0;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -1295,40 +1315,51 @@ z-index: 111;
   bottom: 0px;
   right: 0;
   display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
   gap: 20px;
   padding: 20px 30px;
-  background-color: #FFAB08;
+  background-color: #000833;
   border-radius: 20px;
 }
 
 .top-container {
+  margin: 0 auto;
   width: 1200px;
-  display: flex;
-  justify-content: start;
-  overflow-x: auto; /* Убедитесь, что это auto */
-  scrollbar-width: none; /* Для Firefox */
-  scrollbar-color: #d8d7d6 #f0f0f0;
+  display: grid;
+  grid-template-columns: repeat(3, 0fr);
+  gap: 10px;
 }
+
 .top-container::-webkit-scrollbar {
-  height: 8px; /* Высота скроллбара */
+  height: 8px;
+  /* Высота скроллбара */
 }
 
 .top-container::-webkit-scrollbar-thumb {
-  background-color: #FFAB08; /* Цвет ползунка */
-  border-radius: 10px; /* Скругление углов ползунка */
+  background-color: #FFAB08;
+  /* Цвет ползунка */
+  border-radius: 10px;
+  /* Скругление углов ползунка */
 }
 
 .top-container::-webkit-scrollbar-track {
-  background: #f0f0f0; /* Цвет фона скроллбара */
-  border-radius: 10px; /* Скругление углов фона */
+  background: #f0f0f0;
+  /* Цвет фона скроллбара */
+  border-radius: 10px;
+  /* Скругление углов фона */
 }
 
 .top-container::-webkit-scrollbar-thumb:hover {
-  background-color: #FFA500; /* Цвет ползунка при наведении */
+  background-color: #FFA500;
+  /* Цвет ползунка при наведении */
 }
-.w{
-  background-color: #FFA500; 
+
+.w {
+  background-color: #000833;
 }
+
 .burger-card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -1337,7 +1368,8 @@ z-index: 111;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 20px;
-  background: rgba(255, 255, 255, 0.2); /* Полупрозрачный фон */
+  background: rgba(255, 255, 255, 0.2);
+  /* Полупрозрачный фон */
   backdrop-filter: blur(10px);
   height: 350px;
   width: 290px;
@@ -1347,6 +1379,7 @@ z-index: 111;
   width: 100%;
   height: 200px;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .burger-title {
@@ -1381,3 +1414,136 @@ button {
 button:hover {
   opacity: 0.9;
 }
+
+
+
+
+
+
+.modal2 {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  /* Полупрозрачный фон */
+  z-index: 1000;
+  /* Поверх всех элементов */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content2 {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+  /* Плавное появление */
+}
+
+.modal-content2 h2 {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  margin-inline: 20px 0;
+}
+
+.modal-content2 input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.modal-content2 button {
+  background-color: #FFAB08;
+  /* Яркий оранжевый */
+  border: none;
+  color: white;
+  margin-block: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  width: 300px;
+}
+
+.modal-content2 button:hover {
+  background-color: #e69907;
+  /* Темнее при наведении */
+}
+
+.close {
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #FFAB08;
+  /* Цвет при наведении */
+}
+
+/* Анимация для плавного появления окна */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.dobavit {
+  background-color: #086bff;
+  font-family: Nunito;
+  /* Основной цвет фона */
+  color: white;
+  /* Цвет текста */
+  border: none;
+  /* Убираем рамку */
+  border-radius: 5px;
+  /* Скругление углов */
+  padding: 12px 20px;
+  /* Отступы сверху/снизу и по бокам */
+  font-size: 16px;
+  /* Размер шрифта */
+  font-weight: 500;
+  /* Жирный текст */
+  cursor: pointer;
+  /* Указатель курсора */
+  transition: background-color 0.3s ease, transform 0.2s;
+  /* Плавные переходы */
+  margin-inline: 20px 0;
+}
+
+.dobavit:hover {
+  background-color: #0077ff;
+  /* Цвет фона при наведении */
+  transform: scale(1.05);
+  /* Увеличение кнопки при наведении */
+}
+
+.dobavit:active {
+  transform: scale(0.95);
+  /* Уменьшение кнопки при нажатии */
+}
+
+

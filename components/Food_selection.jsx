@@ -1,19 +1,17 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React from 'react';
 
-function Food_selections({ selctions, isFirst }) {
-    const [isActive, setIsActive] = useState(isFirst)
-
+function Food_selections({ selctions, isActive, setSelectedCategory }) {
     const handleClick = () => {
-        setIsActive((prev) => !prev)
+        setSelectedCategory(selctions._id)
     }
 
     return (
         <div className={`item ${isActive ? 'active' : ''}`} onClick={handleClick}>
-            <img src={selctions.imgSrc} alt={selctions.title} />
-            <span>{selctions.title}</span>
+            {selctions.image && <img src={selctions.image} alt={selctions.name || 'No Name'} />}
+            <span>{selctions.name || 'Unnamed'}</span>
         </div>
     )
 }
 
-export default Food_selections;
+export default Food_selections
