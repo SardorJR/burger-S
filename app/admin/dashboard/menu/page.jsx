@@ -12,7 +12,7 @@ export default function Page() {
 
     const closeModal = () => {
         setIsModalOpen(false);
-    };  
+    };
     const [menuItems, setMenuItems] = useState([]);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ export default function Page() {
             try {
                 const res = await fetch('http://localhost:3000/api/menu');
                 if (!res.ok) throw new Error("Ошибка при получении данных");
-                
+
                 const response = await res.json();
                 setMenuItems(response.data)
             } catch (error) {
@@ -31,35 +31,70 @@ export default function Page() {
         fetchMenuItems();
     }, []);
     return (
+
         <div className="conts">
-            <button className="dobavit" onClick={openModal}>Добавить в меню</button>  
+
+            <button className="dobavit" onClick={openModal}>Добавить в меню</button>
             <div className="top-container">
               
-            {menuItems.map((item) => (
-                <Card2 key={item._id} item={item} />
-            ))}
-              
+
+                    {menuItems.map((item) => (
+                        <Card2 key={item._id} item={item} />
+                    ))}
+
+                </div>
+                {isModalOpen && (
+                    <Modal_Form isOpen={isModalOpen} onClose={closeModal} />
+                )}
             </div>
-            {isModalOpen && (
-                <Modal_Form isOpen={isModalOpen} onClose={closeModal} />
-            )}
-        </div>
-        
-    );
+
+            );
 }
 
 
-export const Card2 = ({ item }) => {
+            export const Card2 = ({item}) => {
+                console.log(item)
     return (
-        <div>
-            <div className="burger-card">
-                <img src={item.image} alt={item.name} className="burger-image" />
-                <h3 className="burger-title">{item.titles ? item.titles.ru : 'Название недоступно'}</h3>
+        <div className="card">
+        <div className="half"></div>
+        <div className="content">
+            <div className="im">
+                <img src={item.image} alt={item.title} />
+            </div>
+            <div className="text">
+                <h2>{item.title}</h2>
+
+            </div>
+            <div className="bts">
+                <div className="buttons">
+                    <button className="blob-btn">
+                        Изменить
+                        <span className="blob-btn__inner">
+                            <span className="blob-btn__blobs">
+                                <span className="blob-btn__blob"></span>
+                                <span className="blob-btn__blob"></span>
+                                <span className="blob-btn__blob"></span>
+                                <span className="blob-btn__blob"></span>
+                            </span>
+                        </span>
+                    </button>
+                </div>
                 <div className="button-container">
-                    <button className="edit-button">Изменить</button>
-                    <button className="delete-button">Удалить</button>
+                    <button className="red-blob-btn">
+                        Удалить
+                        <span className="red-blob-btn__inner">
+                            <span className="red-blob-btn__blobs">
+                                <span className="red-blob-btn__blob"></span>
+                                <span className="red-blob-btn__blob"></span>
+                                <span className="red-blob-btn__blob"></span>
+                                <span className="red-blob-btn__blob"></span>
+                            </span>
+                        </span>
+
+                    </button>
                 </div>
             </div>
+            </div>
         </div>
-    )
+            )
 }

@@ -9,7 +9,7 @@ export type Menu = {
     description: Translation
     price: number;
     weight: string;
-    images: string[];
+    image: string[];
     composition: string;
     category_id: string;
 }

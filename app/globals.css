@@ -10,6 +10,332 @@
   outline: none;
 }
 
+.card {
+  position: relative;
+  width: 300px;
+  height: 330px;
+  display: flex;
+  background: #060c21;
+  margin-block: 30px 0;
+  z-index: 2882828;
+  border-radius: 10px;
+  margin-inline: 30px 0;
+}
+
+.card h2 {
+  margin-bottom: 8px;
+  text-align: justify;
+
+}
+
+.card .half {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  display: block;
+  background: rgba(255, 255, 255, .1);
+  pointer-events: none;
+  border-radius: 10px 10px 0 10px;
+
+  border: 0;
+}
+
+.card .content {
+  color: #ffffff;
+  width: 100%;
+  border-radius: 10px;
+
+  .text {
+    margin-inline: 10px;
+
+    margin-block: 0 20px;
+
+    h2 {
+      font-size: 23px;
+      color: white;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: 500;
+    }
+  }
+
+  .im {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+
+    img {
+      border-radius: 10px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.buttons {
+  margin-inline: 5px 0;
+  border-radius: 10px;
+}
+
+.bts {
+  display: flex;
+  gap: 14px;
+}
+
+.blob-btn {
+  margin-inline: 5px 0;
+  position: relative;
+  padding: 15px 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #0aeafacc;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition: color 0.5s;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.blob-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #0fcee7;
+  border-radius: 10px;
+}
+
+.blob-btn::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s 0.2s;
+  border-radius: 10px;
+}
+
+.blob-btn:hover {
+  color: #FFFFFF;
+}
+
+.blob-btn:hover::after {
+  left: 0;
+  top: 0;
+}
+
+.blob-btn__inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff1a;
+  overflow: hidden;
+  z-index: -1;
+  border-radius: 10px;
+}
+
+.blob-btn__blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+  filter: url('#goo');
+}
+
+.blob-btn__blob {
+  position: absolute;
+  top: 2px;
+  width: 25%;
+  height: 100%;
+  background: #07b3ca;
+  border-radius: 100%;
+  transform: translate3d(0, 150%, 0) scale(1.7);
+  transition: transform 0.45s;
+}
+
+.blob-btn__blob:nth-child(1) {
+  left: 0;
+  transition-delay: 0s;
+}
+
+.blob-btn__blob:nth-child(2) {
+  left: 25%;
+  transition-delay: 0.08s;
+}
+
+.blob-btn__blob:nth-child(3) {
+  left: 50%;
+  transition-delay: 0.16s;
+}
+
+.blob-btn__blob:nth-child(4) {
+  left: 75%;
+  transition-delay: 0.24s;
+}
+
+.blob-btn:hover .blob-btn__blob {
+  transform: translateZ(0) scale(1.4);
+}
+
+.red-buttons {
+  margin-inline: 5px 0;
+  border-radius: 10px;
+}
+
+.red-bts {
+  display: flex;
+  gap: 10px;
+}
+
+.red-blob-btn {
+  margin-inline: 5px 0;
+  position: relative;
+  padding: 15px 24px;
+  margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ff6666cc;
+  /* Красный текст */
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition: color 0.5s;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.red-blob-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #ff0000;
+  /* Красная граница */
+  border-radius: 10px;
+}
+
+.red-blob-btn::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s 0.2s;
+  border-radius: 10px;
+}
+
+.red-blob-btn:hover {
+  color: #FFFFFF;
+}
+
+.red-blob-btn:hover::after {
+  left: 0;
+  top: 0;
+}
+
+.red-blob-btn__inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #ff00001a;
+  /* Прозрачный красный фон */
+  overflow: hidden;
+  z-index: -1;
+  border-radius: 10px;
+}
+
+.red-blob-btn__blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+  filter: url('#goo');
+}
+
+.red-blob-btn__blob {
+  position: absolute;
+  top: 2px;
+  width: 25%;
+  height: 100%;
+  background: #ff0000;
+  /* Красные пузыри */
+  border-radius: 100%;
+  transform: translate3d(0, 150%, 0) scale(1.7);
+  transition: transform 0.45s;
+}
+
+.red-blob-btn__blob:nth-child(1) {
+  left: 0;
+  transition-delay: 0s;
+}
+
+.red-blob-btn__blob:nth-child(2) {
+  left: 25%;
+  transition-delay: 0.08s;
+}
+
+.red-blob-btn__blob:nth-child(3) {
+  left: 50%;
+  transition-delay: 0.16s;
+}
+
+.red-blob-btn__blob:nth-child(4) {
+  left: 75%;
+  transition-delay: 0.24s;
+}
+
+.red-blob-btn:hover .red-blob-btn__blob {
+  transform: translateZ(0) scale(1.4);
+}
+
+.card:before {
+  border-radius: 10px;
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #ffffff;
+  z-index: -1;
+}
+
+.card:after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #ffffff;
+  z-index: -2;
+  filter: blur(40px);
+  border-radius: 10px;
+}
+
+.card:after,
+.card:before {
+  background: linear-gradient(235deg, #89ff00, #010615, rgb(0, 212, 212));
+  border-radius: 10px;
+}
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -1005,7 +1331,7 @@ footer {
   bottom: 0;
   padding: 20px 10px;
   transition: transform 0.3s ease;
-  z-index: 11111;
+  z-index: 111;
   box-shadow: 5px 0 15px rgba(202, 199, 199, 0.637);
 
   h3 {
@@ -1123,11 +1449,18 @@ footer {
   padding: 10px 20px;
   height: 50px;
   box-shadow: 0 0 10px rgb(255, 255, 255);
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 235px;
   right: 0;
   z-index: 111;
+
+  a {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
 }
 
 .header h1 {
@@ -1545,5 +1878,3 @@ button:hover {
   transform: scale(0.95);
   /* Уменьшение кнопки при нажатии */
 }
-
-

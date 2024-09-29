@@ -1,7 +1,7 @@
 import Modal_Dost from "./modal-dostavka";
 
 const Card = ({ elem }) => {
- 
+console.log(elem);
     return (
         <div className="elem">
             <div className="img">
