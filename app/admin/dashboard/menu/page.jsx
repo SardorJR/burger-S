@@ -1,10 +1,11 @@
-
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import Modal_Form from "../form";
+
 export default function Page() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [menuItems, setMenuItems] = useState([]);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -13,7 +14,6 @@ export default function Page() {
     const closeModal = () => {
         setIsModalOpen(false);
     };
-    const [menuItems, setMenuItems] = useState([]);
 
     useEffect(() => {
         const fetchMenuItems = async () => {
@@ -22,7 +22,7 @@ export default function Page() {
                 if (!res.ok) throw new Error("Ошибка при получении данных");
 
                 const response = await res.json();
-                setMenuItems(response.data)
+                setMenuItems(response.data);
             } catch (error) {
                 console.error("Ошибка:", error);
             }
@@ -30,30 +30,23 @@ export default function Page() {
 
         fetchMenuItems();
     }, []);
+
     return (
-
         <div className="conts">
-
             <button className="dobavit" onClick={openModal}>Добавить в меню</button>
             <div className="top-container">
-              
-
-                    {menuItems.map((item) => (
-                        <Card2 key={item._id} item={item} />
-                    ))}
-
-                </div>
-                {isModalOpen && (
-                    <Modal_Form isOpen={isModalOpen} onClose={closeModal} />
-                )}
+                {menuItems.map((item) => (
+                    <Card2 key={item._id} item={item} />
+                ))}
             </div>
-
-            );
+            {isModalOpen && (
+                <Modal_Form isOpen={isModalOpen} onClose={closeModal} />
+            )}
+        </div>
+    );
 }
 
-
-            export const Card2 = ({item}) => {
-                console.log(item)
+export const Card2 = ({ item }) => {
     return (
         <div className="card">
         <div className="half"></div>
@@ -94,7 +87,7 @@ export default function Page() {
                     </button>
                 </div>
             </div>
-            </div>
         </div>
-            )
-}
+    </div>
+    );
+};
